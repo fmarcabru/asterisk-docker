@@ -1,4 +1,4 @@
-FROM debian:stable
+FROM debian:stable-slim
 LABEL Maintainer="Marcabru onin@pm.me"
 RUN apt-get update && apt-get upgrade -y && apt-get install wget -y
 RUN cd /usr/local/src && \
@@ -6,7 +6,7 @@ RUN cd /usr/local/src && \
     tar -xvzf asterisk-18-current.tar.gz && \ 
     rm asterisk-18-current.tar.gz && \
     cd asterisk-18* && \
-    contrib/scripts/install_prereq install && \
+    contrib/scripts/install_prereq test && \
     apt-get purge wget -y
 
 
