@@ -28,9 +28,10 @@ RUN cd /usr/local/src/asterisk-18* \
     make && \
     make install
 
-RUN make samples && \
-    make config && \
-    ldconfig
+RUN cd /usr/local/src/asterisk-18* \
+    && make samples \
+    && make config  \
+    && ldconfig
 
 
 EXPOSE 5060
