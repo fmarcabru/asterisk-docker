@@ -12,7 +12,8 @@ RUN cd /usr/local/src \
     && apt-get autoremove -y
 
 
-RUN ./configure \
+RUN cd /usr/local/src/asterisk-18* \
+    && ./configure \
     && make menuselect.makeopts \ 
     && menuselect/menuselect \
     --enable chan_pjsip \
