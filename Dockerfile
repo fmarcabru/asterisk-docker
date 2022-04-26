@@ -5,7 +5,7 @@ RUN cd /usr/local/src \
     && wget http://downloads.asterisk.org/pub/telephony/asterisk/asterisk-18-current.tar.gz \
     && tar -xvzf asterisk-18-current.tar.gz \ 
     && rm asterisk-18-current.tar.gz \
-    && echo 'libvpb1 libvpb1/countrycode string 61' | sudo debconf-set-selections -v \
+    && echo 'libvpb1 libvpb1/countrycode string 61' | debconf-set-selections -v \
     && cd asterisk-18* \
     && contrib/scripts/install_prereq test \
     && apt-get purge wget -y
