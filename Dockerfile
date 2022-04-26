@@ -6,8 +6,8 @@ RUN cd /usr/local/src && \
     tar -xvzf asterisk-18-current.tar.gz && \ 
     rm asterisk-18-current.tar.gz && \
     cd asterisk-18* && \
-    contrib/scripts/install_prereq && \
-    apt purge wget
+    contrib/scripts/install_prereq install && \
+    apt-get purge wget -y
 
 
 EXPOSE 5060
