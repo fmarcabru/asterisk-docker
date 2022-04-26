@@ -77,5 +77,9 @@ RUN cd asterisk-18-current \
     make
     make install
 
+RUN make samples
+    make config
+    ldconfig
+
 EXPOSE 5060
 ENTRYPOINT [ "asterisk" ]
