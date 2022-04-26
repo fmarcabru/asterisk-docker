@@ -59,7 +59,7 @@ RUN apt-get install -y binutils-dev \
     libxslt1-dev \
     patch \
     pkg-config \
-    pkgconf \
+    #    pkgconf \
     portaudio19-dev \
     subversion \
     unixodbc-dev \
