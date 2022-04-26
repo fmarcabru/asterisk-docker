@@ -8,9 +8,15 @@ RUN cd /usr/local/src \
     && echo 'libvpb1 libvpb1/countrycode string 61' | debconf-set-selections -v \
     && cd asterisk-18* \
     && contrib/scripts/install_prereq test \
-    && apt-get purge wget -y \
+    && apt-get -y install build-essential \
+    libedit-dev \
+    uuid-dev \
+    libjansson-dev \
+    libxml2-dev \
+    #    && apt-get purge wget -y \
     && apt-get autoremove -y
 
+RUN apt-get -y install sqlite3
 
 RUN cd /usr/local/src/asterisk-18* \
     && ./configure \
