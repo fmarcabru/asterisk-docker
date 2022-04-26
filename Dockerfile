@@ -67,5 +67,15 @@ RUN apt-get install -y binutils-dev \
     xmlstarlet \
     zlib1g-dev
 
+RUN cd asterisk-18-current \
+    sudo contrib/scripts/install_prereq install
+    ./configure
+    make menuselect.makeopts 
+    menuselect/menuselect \
+    --enable chan_pjsip \
+    --enable res_http_websocket
+    make
+    make install
+
 EXPOSE 5060
 ENTRYPOINT [ "asterisk" ]
