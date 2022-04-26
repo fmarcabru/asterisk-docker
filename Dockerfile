@@ -8,20 +8,21 @@ RUN cd /usr/local/src \
     && echo 'libvpb1 libvpb1/countrycode string 61' | debconf-set-selections -v \
     && cd asterisk-18* \
     && contrib/scripts/install_prereq test \
-    && apt-get purge wget -y
+    && apt-get purge wget -y \
+    && apt-get autoremove -y
 
 
-#RUN ./configure && \
-#    make menuselect.makeopts && \ 
-#    menuselect/menuselect \
-#    --enable chan_pjsip \
-#    --enable res_http_websocket && \
-#    make && \
-#    make install
+RUN ./configure \
+    && make menuselect.makeopts \ 
+    && menuselect/menuselect \
+    --enable chan_pjsip \
+    --enable res_http_websocket \
+    #    make && \
+    #    make install
 
-#RUN make samples && \
-#    make config && \
-#    ldconfig
+    #RUN make samples && \
+    #    make config && \
+    #    ldconfig
 
-EXPOSE 5060
+    EXPOSE 5060
 ENTRYPOINT [ "asterisk" ]
