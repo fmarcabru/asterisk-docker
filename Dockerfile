@@ -2,9 +2,9 @@ FROM debian:stable-slim
 LABEL Maintainer="Marcabru onin@pm.me"
 RUN apt-get update && apt-get upgrade -y \
     && apt-get install -y wget \
-    apt-utils \
-    debconf-utils 
-RUN cd /usr/local/src \
+    #    apt-utils \
+    #    debconf-utils 
+    RUN cd /usr/local/src \
     && wget http://downloads.asterisk.org/pub/telephony/asterisk/asterisk-18-current.tar.gz \
     && tar -xvzf asterisk-18-current.tar.gz \ 
     && rm asterisk-18-current.tar.gz \
@@ -16,10 +16,8 @@ RUN cd /usr/local/src \
     uuid-dev \
     libjansson-dev \
     libxml2-dev \
-    #    && apt-get purge wget -y \
+    libsqlite3-dev \
     && apt-get autoremove -y
-
-RUN apt-get -y install sqlite3
 
 RUN cd /usr/local/src/asterisk-18* \
     && ./configure \
@@ -27,11 +25,11 @@ RUN cd /usr/local/src/asterisk-18* \
     && menuselect/menuselect \
     --enable chan_pjsip \
     --enable res_http_websocket \
-    #    make && \
-    #    make install
+    make && \
+    make install
 
-    #RUN make samples && \
-    #    make config && \
-    #    ldconfig
-    EXPOSE 5060
+#RUN make samples && \
+#    make config && \
+#    ldconfig
+EXPOSE 5060
 ENTRYPOINT [ "asterisk" ]
