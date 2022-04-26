@@ -1,10 +1,10 @@
 FROM debian:stable-slim
 LABEL Maintainer="Marcabru onin@pm.me"
 RUN apt-get update && apt-get upgrade -y \
-    && apt-get install -y wget \
-    #    apt-utils \
-    #    debconf-utils 
-    RUN cd /usr/local/src \
+    && apt-get install -y wget
+#    apt-utils \
+#    debconf-utils 
+RUN cd /usr/local/src \
     && wget http://downloads.asterisk.org/pub/telephony/asterisk/asterisk-18-current.tar.gz \
     && tar -xvzf asterisk-18-current.tar.gz \ 
     && rm asterisk-18-current.tar.gz \
