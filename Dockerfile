@@ -10,77 +10,18 @@ RUN cd /usr/local/src \
     && contrib/scripts/install_prereq test \
     && apt-get purge wget -y
 
-RUN apt-get install -y binutils-dev \
-    bison \
-    build-essential \
-    doxygen \
-    flex \
-    freetds-dev \
-    graphviz \
-    libasound2-dev \
-    libbluetooth-dev \
-    libc-client2007e-dev \
-    libcap-dev \
-    libcfg-dev \
-    libcodec2-dev \
-    libcorosync-common-dev \
-    libcpg-dev \
-    libcurl4-openssl-dev \
-    libedit-dev \
-    libfftw3-dev \
-    libgmime-3.0-dev \
-    libgsm1-dev \
-    libical-dev \
-    libiksemel-dev \
-    libjack-jackd2-dev \
-    libjansson-dev \
-    libldap2-dev \
-    liblua5.2-dev \
-    libneon27-dev \
-    libnewt-dev \
-    libogg-dev \
-    libosptk-dev \
-    libpopt-dev \
-    libpq-dev \
-    libradcli-dev \
-    libresample1-dev \
-    libsndfile1-dev \
-    libsnmp-dev \
-    libspandsp-dev \
-    libspeex-dev \
-    libspeexdsp-dev \
-    libsqlite3-dev \
-    libsrtp2-dev \
-    libssl-dev \
-    libunbound-dev \
-    liburiparser-dev \
-    libvorbis-dev \
-    libvpb-dev \
-    libxml2-dev \
-    libxslt1-dev \
-    patch \
-    pkg-config \
-    #    pkgconf \
-    portaudio19-dev \
-    subversion \
-    unixodbc-dev \
-    uuid-dev \
-    xmlstarlet \
-    zlib1g-dev
 
-RUN cd asterisk-18-current \
-    sudo contrib/scripts/install_prereq install
-./configure
-make menuselect.makeopts 
-menuselect/menuselect \
-    --enable chan_pjsip \
-    --enable res_http_websocket
-make
-make install
+#RUN ./configure && \
+#    make menuselect.makeopts && \ 
+#    menuselect/menuselect \
+#    --enable chan_pjsip \
+#    --enable res_http_websocket && \
+#    make && \
+#    make install
 
-RUN make samples
-make config
-ldconfig
+#RUN make samples && \
+#    make config && \
+#    ldconfig
 
 EXPOSE 5060
 ENTRYPOINT [ "asterisk" ]
