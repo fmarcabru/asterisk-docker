@@ -26,6 +26,7 @@ RUN cd /usr/local/src/asterisk-18* \
     && make config  \
     && ldconfig
 
+VOLUME [ "/etc/asterisk" ]
 
 EXPOSE 5060/UDP
 EXPOSE 443
