@@ -27,5 +27,8 @@ RUN cd /usr/local/src/asterisk-18* \
     && ldconfig
 
 
-EXPOSE 5060
+EXPOSE 5060/UDP
+EXPOSE 443
+EXPOSE 80
 ENTRYPOINT [ "asterisk" ]
+CMD ["-vvf"]
