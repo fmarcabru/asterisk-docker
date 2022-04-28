@@ -24,12 +24,16 @@ RUN cd /usr/local/src/asterisk-18* \
 RUN cd /usr/local/src/asterisk-18* \
     && make samples \
     && make config  \
-    && ldconfig
+    && ldconfig \
+    && cp -rf /etc/asterisk/ /var/tmp/ \
+    && rm -rf /etc/asterisk/*
+
+COPY entrypoint.sh /
 
 VOLUME [ "/etc/asterisk" ]
 
 EXPOSE 5060/UDP
 EXPOSE 443
 EXPOSE 80
-ENTRYPOINT [ "asterisk" ]
-CMD ["-vvf"]
+ENTRYPOINT [ "/entrypoint.sh" ]
+#CMD ["-vvf"]

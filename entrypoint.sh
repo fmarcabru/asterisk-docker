@@ -3,4 +3,5 @@
 
 if [ ! "$(ls -A /etc/asterisk )" ]
 then
-    cp /usr/local/src/
+    cp -rf /var/tmp/asterisk/ /etc/
+asterisk -vvf
