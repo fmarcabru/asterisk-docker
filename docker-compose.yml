@@ -1,0 +1,10 @@
+version: "2.1"
+services:
+  asterisk:
+    image: asterisk
+    container_name: ast
+    volumes:
+      - /srv/dev-disk-by-label-Data-juan/containers/asterisk/:/etc/asterisk
+    ports:
+      - 5060:5060/udp
+    restart: unless-stopped
