@@ -2,7 +2,9 @@ FROM debian:stable-slim
 LABEL Maintainer="Marcabru onin@pm.me"
 WORKDIR /usr/local/src
 RUN apt-get update && apt-get upgrade -y \
-    && apt-get install -y wget
+    && apt-get install -y wget vim python3-pip
+
+RUN python3 -m pip install requests websocket-client
 
 RUN wget http://downloads.asterisk.org/pub/telephony/asterisk/asterisk-18-current.tar.gz \
     && tar -xvzf asterisk-18-current.tar.gz \ 
